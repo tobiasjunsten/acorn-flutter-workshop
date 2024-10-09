@@ -1,14 +1,13 @@
 import 'package:acorn_flutter_workshop/cheat/state/image_state.dart';
-import 'package:acorn_flutter_workshop/cheat/ui/space_home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SpaceImagesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SpaceImagesApp extends StatelessWidget {
+  const SpaceImagesApp({super.key});
 
   @override
   Widget build(BuildContext context) {

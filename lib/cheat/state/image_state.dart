@@ -7,7 +7,7 @@ import 'package:acorn_flutter_workshop/cheat/model/image_info.dart';
 import 'package:flutter/material.dart';
 
 class ImageState extends ChangeNotifier {
-  NasaImageInfo? current;
+  NasaImageInfo? currentImage;
   var favorites = <NasaImageInfo>[];
   var searchResult = <NasaImageInfo>[];
 
@@ -15,8 +15,8 @@ class ImageState extends ChangeNotifier {
     _initWithLocalData();
   }
 
-  void getNext() {
-    current = _getRandomFromSearch();
+  void loadNextImage() {
+    currentImage = _getRandomFromSearch();
     notifyListeners();
   }
 
@@ -31,18 +31,17 @@ class ImageState extends ChangeNotifier {
   }
 
   void toggleCurrentFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else if (current != null) {
-      favorites.add(current!);
+    if (favorites.contains(currentImage)) {
+      favorites.remove(currentImage);
+    } else if (currentImage != null) {
+      favorites.add(currentImage!);
     }
     notifyListeners();
   }
 
   NasaImageInfo? _getRandomFromSearch() {
     if (searchResult.isEmpty) return null;
-    final random = Random();
-    int randomIndex = random.nextInt(searchResult.length);
+    int randomIndex = Random().nextInt(searchResult.length);
     return searchResult[randomIndex];
   }
 
@@ -64,16 +63,15 @@ class ImageState extends ChangeNotifier {
   }
 
   void _initFromString(String json) {
-    var items = jsonDecode(json);
-    var itemsList = items as List;
-    searchResult = itemsList
+    var items = jsonDecode(json) as List;
+    searchResult = items
         .where((element) => element['media_type'] == 'image')
         .map((item) => NasaImageInfo(
             url: item['thumbnail_url'] ?? item['url'],
             title: item['title'],
             id: item['url']))
         .toList();
-    current = _getRandomFromSearch();
+    currentImage = _getRandomFromSearch();
     notifyListeners();
   }
 }

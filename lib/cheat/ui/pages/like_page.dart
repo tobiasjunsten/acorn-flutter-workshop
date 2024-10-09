@@ -9,15 +9,16 @@ class LikePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<ImageState>();
-    var nasaImage = appState.current;
+    var nasaImage = appState.currentImage;
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          nasaImage != null
-              ? Expanded(child: ImageCard(image: nasaImage))
-              : const Placeholder(),
+          Expanded(
+            child:
+                nasaImage != null ? ImageCard(image: nasaImage) : const Card(),
+          ),
           const SizedBox(height: 20),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -36,13 +37,9 @@ class LikePage extends StatelessWidget {
               const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
-                  appState.getNext();
+                  appState.loadNextImage();
                 },
-                child: const Row(
-                  children: [
-                    Text('Next'),
-                  ],
-                ),
+                child: Text('Next'),
               ),
             ],
           ),
