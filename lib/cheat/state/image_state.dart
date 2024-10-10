@@ -11,7 +11,9 @@ class ImageState extends ChangeNotifier {
   var favorites = <NasaImageInfo>[];
   var searchResult = <NasaImageInfo>[];
 
-  ImageState() {
+  ImageState();
+
+  void init() {
     _initWithLocalData();
   }
 
@@ -51,6 +53,7 @@ class ImageState extends ChangeNotifier {
   }
 
   void _initFromNasaApi() {
+    // A real api key kan be generated here: https://api.nasa.gov/
     var apiKey = "DEMO_KEY";
     http
         .get(Uri.parse(

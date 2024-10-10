@@ -14,27 +14,33 @@ class FavoritesPage extends StatelessWidget {
             child: Text('No favs yet...'),
           )
         : GridView.count(
-            crossAxisCount: 2,
+            crossAxisCount: 4,
             children: state.favorites
                 .map(
                   (imageInfo) => Card(
                     color: Theme.of(context).colorScheme.primary,
-                    child: Stack(children: [
-                      Center(child: Image.network(imageInfo.url)),
-                      Positioned(
-                        bottom: 8,
-                        left: 8,
-                        child: GestureDetector(
-                          onTap: () {
-                            state.toggleFavorite(imageInfo.id);
-                          },
-                          child: const Icon(
-                            Icons.favorite,
-                            color: Colors.white,
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.network(
+                          imageInfo.url,
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          bottom: 8,
+                          left: 8,
+                          child: GestureDetector(
+                            onTap: () {
+                              state.toggleFavorite(imageInfo.id);
+                            },
+                            child: const Icon(
+                              Icons.favorite,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                    ]),
+                      ],
+                    ),
                   ),
                 )
                 .toList(),

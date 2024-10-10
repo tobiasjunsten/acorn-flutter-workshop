@@ -16,8 +16,16 @@ class LikePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child:
-                nasaImage != null ? ImageCard(image: nasaImage) : const Card(),
+            child: nasaImage != null
+                ? ImageCard(image: nasaImage)
+                : SizedBox(
+                    width: double.infinity,
+                    child: const Card(
+                      child: Center(
+                          child:
+                              Text('No images have been initialized yet...')),
+                    ),
+                  ),
           ),
           const SizedBox(height: 20),
           Row(
