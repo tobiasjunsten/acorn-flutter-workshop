@@ -20,7 +20,7 @@ class SpaceImagesApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
         ),
-        home: const SpaceHome(),
+        home: MainPage(),
       ),
     );
   }
