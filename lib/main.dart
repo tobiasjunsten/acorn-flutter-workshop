@@ -1,5 +1,6 @@
 import 'package:acorn_flutter_workshop/cheat/state/image_state.dart';
 import 'package:acorn_flutter_workshop/cheat/ui/space_home.dart';
+import 'package:acorn_flutter_workshop/ui/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,17 +23,6 @@ class SpaceImagesApp extends StatelessWidget {
         ),
         home: MainPage(),
       ),
-    );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text('Welcome to the Space Images App!'),
     );
   }
 }

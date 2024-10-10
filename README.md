@@ -26,8 +26,8 @@ Create two new widgets that represents the LikePage and the FavoritesPage. Swap 
 #### Step by step
 
 1. **Add a NavigationRail**  
-* Head over to `main.dart`
-* Remove the Text widget on line 34 and replace it with a NavigationRail containing two destinations and a selectedIndex of 0.  
+* Head over to `ui/main_page.dart`
+* Remove the Text widget on line 9 and replace it with a NavigationRail containing two destinations and a selectedIndex of 0.  
     ```
     NavigationRail(
         destinations: const [
